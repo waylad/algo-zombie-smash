@@ -14,7 +14,7 @@ We propose to create a similar game where your car is a SMASHER NFT on-chain.
 
 # Mood Board
 The following Mood Board contains pictures courtesy of Earn To Die 2
-![](https://algo-zombie-smash.pages.dev/assets/screenshots/mood.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/mood2.png)
 
 # Designing smashers, upgrades, backgrounds, etc…
 We hired artist Robson Teixeira to create everything we’ll need for our game: smashers, garage, the upgradable elements and some elements of the game. Next slide is the proof from fiverr.com. We have paid him 621.17 euros so far to originally design all you’re going to see next. We own their full copyrights.
