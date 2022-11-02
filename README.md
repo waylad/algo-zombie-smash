@@ -13,7 +13,7 @@ The game is a 2D car game that will make you go from one point to another while 
 We propose to create a similar game where your car is a SMASHER NFT on-chain. 
 
 # Mood Board
-The following Mood Board contains pictures courtesy of Earn To Die 2
+The following Mood Board contains pictures courtesy of [Earn To Die 2](https://play.google.com/store/apps/details?id=com.notdoppler.earntodie2)
 ![](https://algo-zombie-smash.pages.dev/assets/screenshots/mood2.png)
 
 # Designing smashers, upgrades, backgrounds, etc…
