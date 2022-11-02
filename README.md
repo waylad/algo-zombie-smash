@@ -3,6 +3,7 @@
 ![](https://algo-zombie-smash.pages.dev/assets/screenshots/demo2.png)
 
 # Demo Video
+https://youtu.be/tRRCUCSZ-Nk
 
 # Demo
 https://algo-zombie-smash.pages.dev
@@ -17,7 +18,7 @@ The following Mood Board contains pictures courtesy of [Earn To Die 2](https://p
 ![](https://algo-zombie-smash.pages.dev/assets/screenshots/mood2.png)
 
 # Designing smashers, upgrades, backgrounds, etc…
-We hired artist Robson Teixeira to create everything we’ll need for our game: smashers, garage, the upgradable elements and some elements of the game. Next slide is the proof from fiverr.com. We have paid him 621.17 euros so far to originally design all you’re going to see next. We own their full copyrights.
+We hired artist Robson Teixeira to create everything we’ll need for our game: smashers, garage, the upgradable elements and some elements of the game. Next is the proof from fiverr.com. We have paid him 621.17 euros so far to originally design all you’re going to see next. We own their full copyrights.
 ![](https://algo-zombie-smash.pages.dev/assets/screenshots/fiverr.png)
 
 # Getting started
@@ -48,7 +49,7 @@ An this is SMASHER 1220132
 When upgrading a SMASHER NFT, we simply change the code in its metadata on-chain so the TokenURI points to the new pre-rendered configuration.
 
 # The Map
-Each level is also a token! Its metadata contains the configuration of the level from the shape of the terrain to the position and strength of each zombie. Why is that? Because Zombie SMASHER is a metaverse when people can create and sell levels! From the map, you can see all levels and their ratings. The map will itself be a marketplace but for levels. You will be able to see the ratings of each level just like Happy Wheels (See next slide) so you can choose to purchase a level or not. Levels are NT-NFT, Non-Transfer NFT, you purchase them directly from its creator then you can play the level, but never resell it. 
+Each level is also a token! Its metadata contains the configuration of the level from the shape of the terrain to the position and strength of each zombie. Why is that? Because Zombie SMASHER is a metaverse when people can create and sell levels! From the map, you can see all levels and their ratings. The map will itself be a marketplace but for levels. You will be able to see the ratings of each level just like Happy Wheels (See below) so you can choose to purchase a level or not. Levels are NT-NFT, Non-Transfer NFT, you purchase them directly from its creator then you can play the level, but never resell it. 
 
 ![](https://algo-zombie-smash.pages.dev/assets/screenshots/happy-wheels.jpeg)
 Image courtesy of Happy Wheels
