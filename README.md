@@ -1,9 +1,11 @@
 ## Zombie Smash
-![](https://zombie-smash.pages.dev/assets/screenshots/home.png)
-![](https://zombie-smash.pages.dev/assets/screenshots/demo.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/home.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/demo.png)
 
 # Demo Video
-https://youtu.be/UZ6J4mlkxgw
+
+# Demo
+https://algo-zombie-smash.pages.dev
 
 # Concept
 You and your SMASHER have to cross over the USA to deliver an important package. The only issue: It’s full of zombies!
@@ -12,52 +14,50 @@ We propose to create a similar game where your car is a SMASHER NFT on-chain.
 
 # Mood Board
 The following Mood Board contains pictures courtesy of Earn To Die 2
-![](https://zombie-smash.pages.dev/assets/screenshots/mood.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/mood.png)
 
 # Designing smashers, upgrades, backgrounds, etc…
-We hired artist Robson Teixeira to create everything we’ll need for our game: smashers, garage, the upgradable elements and some elements of the game. Next slide is the proof from fiverr.com. We have paid him 621.17 euros so far to originally design all you’re going to see in the next slides. We own their full copyrights.
-![](https://zombie-smash.pages.dev/assets/screenshots/fiverr.png)
+We hired artist Robson Teixeira to create everything we’ll need for our game: smashers, garage, the upgradable elements and some elements of the game. Next slide is the proof from fiverr.com. We have paid him 621.17 euros so far to originally design all you’re going to see next. We own their full copyrights.
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/fiverr.png)
 
 # Getting started
-The player will first need a SMASHER NFT to play the game. When you open the game, the first screen is the SMASHER marketplace, where you can buy and sell your SMASHERs from other players. Some are already upgraded and quite expensive and some are low-level and cheap. 
-Our team will make sure to often mint and put on sale some new entry-level SMASHERs on the marketplace for new players to get started for cheap.
-![](https://zombie-smash.pages.dev/assets/screenshots/marketplace.png)
+The player will first need a SMASHER NFT to play the game. When you open the game, the first screen is your list of SMASHERs, where you can select one or mint a new one.
 
 # Upgradability
-Once you have purchased a SMASHER, you can select it and access the garage where you can upgrade it. Each upgrade costs SMASHER Coins, an in-game ERC20 currency that you earn at the end of each level depending on the number of zombies you have killed. 
-![](https://zombie-smash.pages.dev/assets/screenshots/garage-scene1.png)
+Next, you can access the garage where you can upgrade your SMASHER. Each upgrade costs SMASHER Coins, an in-game ARC3 currency that you earn at the end of each level depending on the number of zombies you have killed. 
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/garage-scene1.png)
 
 # Upgradability
 Once you have enough SMASHER Coins, you can upgrade your NFT SMASHER on-chain with new weapons, armor, wheels, etc and make it the perfect zombie killing machine.
-![](https://zombie-smash.pages.dev/assets/screenshots/garage-scene2.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/garage-scene2.png)
 
 # 2387
 That’s the number of unique combination your SMASHER NFT can have already, and we’re just getting started!
-![](https://zombie-smash.pages.dev/assets/screenshots/configs.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/configs.png)
 
 # How it works?
 Your SMASHER is dynamic NFT which means its metadata can be upgraded on-chain to equip your SMASHER with a gun, a booster, an armor, better wheels, etc…
 We prerender all combinations of SMASHER and assign it a code. Each digit corresponds to the level of upgrade of the corresponding part. 
 For instance: This is SMASHER 0000000
-![](https://zombie-smash.pages.dev/assets/screenshots/config1.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/config1.png)
 
 # How it works?
 An this is SMASHER 1220132 
-![](https://zombie-smash.pages.dev/assets/screenshots/config2.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/config2.png)
 
 When upgrading a SMASHER NFT, we simply change the code in its metadata on-chain so the TokenURI points to the new pre-rendered configuration.
 
 # The Map
-Each level is also a token! Its metadata contains the configuration of the level from the shape of the terrain to the position and strength of each zombie. Why is that? Because BattleSMASHERs is a metaverse when people can create and sell levels! From the map, you can see all levels and their ratings. The map will itself be another marketplace but for levels. You will be able to see the ratings of each level just like Happy Wheels (See next slide) so you can choose to purchase a level or not. Levels are NT-NFT, Non-Transfer NFT, you purchase them directly from its creator then you can play the level, but never resell it. 
+Each level is also a token! Its metadata contains the configuration of the level from the shape of the terrain to the position and strength of each zombie. Why is that? Because Zombie SMASHER is a metaverse when people can create and sell levels! From the map, you can see all levels and their ratings. The map will itself be a marketplace but for levels. You will be able to see the ratings of each level just like Happy Wheels (See next slide) so you can choose to purchase a level or not. Levels are NT-NFT, Non-Transfer NFT, you purchase them directly from its creator then you can play the level, but never resell it. 
 
-![](https://zombie-smash.pages.dev/assets/screenshots/happy-wheels.jpeg)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/happy-wheels.jpeg)
 Image courtesy of Happy Wheels
 
-![](https://zombie-smash.pages.dev/assets/screenshots/map-scene.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/map-scene.png)
 Still under development!
 
 # Game flow
-![](https://zombie-smash.pages.dev/assets/screenshots/flow2.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/flow2.png)
 
 # Token Model
 We have 3 tokens :
@@ -83,16 +83,17 @@ We have 3 tokens :
 
 # Demo
 We are far from done but we have already coded the basics of the project, available at:
-https://zombiesmash.io
+https://algo-zombie-smash.pages.dev
 
-We created an ERC721 smart contract for the SMASHERs and added metadata upgradability and marketplace functionalities. We also developed the first part of the game using the Phaser.js engine. The marketplace and garage are fully functional and you can already pilot your SMASHER in a physics sandbox (that is empty so far)
-To play de prototype, you'll need to install metamask, connect it to the `Trust Testnet` and have some tokens to buy a SMASHER NFT (You can use this faucet or this faucet)
+We created an ARC19 smart contract for the SMASHERs and added metadata upgradability and marketplace functionalities. We also developed the first part of the game using the Phaser.js engine. The marketplace and garage are fully functional and you can already pilot your SMASHER in a physics sandbox (that is empty so far)
+To play de prototype, you'll need to install AlgoSigner, connect it to the `Testnet` and have some tokens to mint a SMASHER NFT.
 
 # Todo list
-- SMASHER D-NFT ERC721 + Marketplace Contract ✅
-- SMASHER COIN ERC20 Contract ✅
-- LEVELS NT-NFT ERC721 + Marketplace Contract ❌ (3-7 days to complete)
-- In-game SMASHER marketplace ✅
+- SMASHER D-NFT ARC19  ✅
+- Upgrade your SMASHER onchain ✅
+- SMASHER COIN ARC3 Contract ❌ (3-7 days to complete)
+- LEVELS NT-NFT ARC19 + Marketplace Contract ❌ (3-7 days to complete)
+- In-game SMASHER marketplace ❌ (9-13 days to complete)
 - In-game Levels marketplace ❌ (9-13 days to complete)
 - Physics Sandbox ✅
 - Pilot your SMASHER NFT ✅
@@ -100,7 +101,7 @@ To play de prototype, you'll need to install metamask, connect it to the `Trust 
 - Implement multiples levels, multiples SMASHERs with their upgrades ❌ (This is where most of the budget will go. All the technical pieces are in place, now we just need to fill the game with content)
 
 # Contact me
-I’m a freelance developer and would love to keep working on the game. If you any question, don't hesite to contsact me.
+I’m a freelance developer and developing the game in my extra time. If you any question, don't hesite to contact me.
 
 Email: waylad42@gmail.com
 Discord: waylad#4756

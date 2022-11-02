@@ -1,77 +1,141 @@
-import { ethers } from 'ethers'
-import { CarToken } from '../state/stateTypes'
-import { contracts, state } from '../state/state'
-const CarsAbi = require('./abi/Cars.json')
-import type { Cars } from './types/contracts/Cars'
+import algosdk from 'algosdk'
+import { CarToken } from 'state/stateTypes'
+import { state } from '../state/state'
 
-declare var window: any
-let provider: ethers.providers.Web3Provider
-let signer: ethers.providers.JsonRpcSigner
+declare const AlgoSigner: any
+
 let address: string
-let carsContractWithSigner: Cars
+let params: any
 
 export const connectWallet = async () => {
-  provider = new ethers.providers.Web3Provider(window.ethereum)
-  const { chainId } = await provider.getNetwork()
-  console.log(chainId)
+  try {
+    if (typeof AlgoSigner !== 'undefined') {
+      console.log('AlgoSigner is installed.')
 
-  state.contracts = contracts[chainId]
-  if (!state.contracts || !state.contracts.carsContract)
-    throw new Error('Wrong Network. Please connect Metamask to the correct testnet.')
+      await AlgoSigner.connect()
 
-  await provider.send('eth_requestAccounts', [])
+      const algodServer = 'https://testnet-algorand.api.purestake.io/ps2'
+      const indexerServer = 'https://testnet-algorand.api.purestake.io/idx2'
+      const token = { 'X-API-Key': 'cnPOsJmkLV99ccOnzgC3d9DOrHyXrs5ka9JB2Vcl' }
+      const port = ''
 
-  signer = provider.getSigner()
-  address = await signer.getAddress()
+      const algodClient = new algosdk.Algodv2(token, algodServer, port)
+      const indexerClient = new algosdk.Indexer(token, indexerServer, port)
 
-  const carsContract = new ethers.Contract(state.contracts.carsContract, CarsAbi, provider)
-  carsContractWithSigner = <Cars>carsContract.connect(signer)
+      const health = await algodClient.healthCheck().do()
+      console.log(health)
+
+      const accounts = await AlgoSigner.accounts({
+        ledger: 'TestNet',
+      })
+      address = accounts[0]?.address
+      console.log(address)
+
+      params = await algodClient.getTransactionParams().do()
+      console.log(params)
+
+    } else {
+      console.log('AlgoSigner is NOT installed.')
+    }
+  } catch (e: any) {
+    console.log(e)
+    // window.location.reload()
+  }
 }
 
 export const getCars = async () => {
-  const ownedCarsIds = await carsContractWithSigner.getTokensOwnedByMe()
-  ownedCarsIds.forEach(async (ownedCarsId) => {
-    const carMeta = await carsContractWithSigner.tokenMeta(ownedCarsId)
-    state.ownedCars.push({
-      tokenId: carMeta[0].toNumber(),
-      carCode: carMeta[3].replace('https://zombiesmash.io/assets/cars/', '').replace('.json', ''),
-      price: carMeta[1].toNumber(),
-      owned: true,
+  try {
+    const resp = await AlgoSigner.indexer({
+      ledger: 'TestNet',
+      path: `/v2/assets?name=${'ZOMBIE SMASHER Car'}&limit=${4}&creator=${address}`,
     })
-  })
-  console.log(state.ownedCars)
 
-  const onSaleCarsIds = await carsContractWithSigner.getAllOnSale()
-  onSaleCarsIds.forEach(async (onSaleCar) => {
-    state.onSaleCars.push({
-      tokenId: onSaleCar[0].toNumber(),
-      carCode: onSaleCar[3].replace('https://zombiesmash.io/assets/cars/', '').replace('.json', ''),
-      price: onSaleCar[1].toNumber(),
-      owned: false,
+    resp.assets.forEach((nft: any) => {
+      if (nft.params.name.indexOf('ZOMBIE SMASHER Car') >= 0) {
+        state.ownedCars.push({
+          tokenId: nft.index,
+          carCode: nft.params.name.replace('ZOMBIE SMASHER Car ', ''),
+        })
+      }
     })
+  } catch (e: any) {
+    console.log(e)
+    // window.location.reload()
+  }
+}
+
+export const mintCar = async () => {
+  const creator = address
+  const defaultFrozen = false
+  const unitName = 'SMASH'
+  const assetName = 'ZOMBIE SMASHER Car 00000000'
+  const url = 'https://algo-zombie-smash.pages.dev/assets/cars/00000000.json'
+  const managerAddr = undefined
+  const reserveAddr = undefined
+  const freezeAddr = undefined
+  const clawbackAddr = undefined
+  const total = 1 // NFTs have totalIssuance of exactly 1
+  const decimals = 0 // NFTs have decimals of exactly 0
+
+  const txn = algosdk.makeAssetCreateTxnWithSuggestedParamsFromObject({
+    from: creator,
+    total,
+    decimals,
+    assetName,
+    unitName,
+    assetURL: url,
+    // assetMetadataHash: metadata,
+    defaultFrozen,
+    freeze: freezeAddr,
+    manager: managerAddr,
+    clawback: clawbackAddr,
+    reserve: reserveAddr,
+    suggestedParams: params,
   })
-  console.log(state.onSaleCars)
-}
 
-export const buyCar = async (carToken: CarToken) => {
-  const receipt = await carsContractWithSigner.purchaseToken(carToken.tokenId, {
-    value: carToken.price,
+  const txn_b64 = AlgoSigner.encoding.msgpackToBase64(txn.toByte())
+  const signedTxs = await AlgoSigner.signTxn([{ txn: txn_b64 }])
+  const sent = await AlgoSigner.send({
+    ledger: 'TestNet',
+    tx: signedTxs[0].blob,
   })
-  const tx = await receipt.wait()
-  console.log(tx)
+  console.log(sent)
 }
 
-export const sellCar = async (carToken: CarToken, price: number) => {
-  const receipt = await carsContractWithSigner.setTokenSale(carToken.tokenId, true, price)
-  const tx = await receipt.wait()
-  console.log(tx)
-}
+export const upgradeCar = async (car: CarToken) => {
+  const creator = address
+  const defaultFrozen = false
+  const unitName = 'SMASH'
+  const assetName = `ZOMBIE SMASHER Car ${car.carCode}`
+  const url = `https://algo-zombie-smash.pages.dev/assets/cars/${car.carCode}.json`
+  const managerAddr = undefined
+  const reserveAddr = undefined
+  const freezeAddr = undefined
+  const clawbackAddr = undefined
+  const total = 1 // NFTs have totalIssuance of exactly 1
+  const decimals = 0 // NFTs have decimals of exactly 0
 
-export const upgradeCar = async (carToken: CarToken) => {
-  const receipt = await carsContractWithSigner.updateTokenUri(
-    carToken.tokenId,
-    `https://zombiesmash.io/assets/cars/${carToken.carCode}.json`,
-  )
-  const tx = await receipt.wait()
-  console.log(tx)
+  const txn = algosdk.makeAssetCreateTxnWithSuggestedParamsFromObject({
+    from: creator,
+    total,
+    decimals,
+    assetName,
+    unitName,
+    assetURL: url,
+    // assetMetadataHash: metadata,
+    defaultFrozen,
+    freeze: freezeAddr,
+    manager: managerAddr,
+    clawback: clawbackAddr,
+    reserve: reserveAddr,
+    suggestedParams: params,
+  })
+
+  const txn_b64 = AlgoSigner.encoding.msgpackToBase64(txn.toByte())
+  const signedTxs = await AlgoSigner.signTxn([{ txn: txn_b64 }])
+  const sent = await AlgoSigner.send({
+    ledger: 'TestNet',
+    tx: signedTxs[0].blob,
+  })
+  console.log(sent)
 }

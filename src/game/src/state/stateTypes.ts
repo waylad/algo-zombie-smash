@@ -1,8 +1,6 @@
 export type CarToken = {
   tokenId: number
   carCode: string
-  price: number
-  owned: boolean
 }
 
 export type State = {
