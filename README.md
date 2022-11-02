@@ -1,6 +1,6 @@
 ## Zombie Smash
 ![](https://algo-zombie-smash.pages.dev/assets/screenshots/home.png)
-![](https://algo-zombie-smash.pages.dev/assets/screenshots/demo.png)
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/demo2.png)
 
 # Demo Video
 
@@ -106,5 +106,4 @@ I’m a freelance developer and developing the game in my extra time. If you any
 Email: waylad42@gmail.com
 Discord: waylad#4756
 
-# Source code
-I have included the source code for the judges in the `Additional Info` section.
+![](https://algo-zombie-smash.pages.dev/assets/screenshots/zombie.png)
